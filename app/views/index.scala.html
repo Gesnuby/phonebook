@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>Phonebook</title>
+        <link rel="stylesheet" href="@routes.Assets.at("css/bootstrap.min.css")">
+
+        <script src="@routes.Assets.at("javascript/angular.min.js")"></script>
+        <script src="@routes.Assets.at("javascript/main.js")"></script>
+        <script src="@routes.Assets.at("javascript/jquery-3.1.1.min.js")"></script>
+        <script src="@routes.Assets.at("javascript/bootstrap.min.js")"></script>
+        <script src="@routes.Assets.at("javascript/ui-bootstrap-tpls-2.2.0.min.js")"></script>
+    </head>
+    <body ng-controller="AppCtrl">
+        <nav class="navbar navbar-default" style="background-color: #90c1f3">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <h3 style="margin: 10px">Phonebook</h3>
+                </div>
+            </div>
+        </nav>
+        <div class="body-content container-fluid">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search..." ng-model="name"
+                        ng-model-options="{debounce: 600}" style="border-radius: 5px">
+                    </div>
+                </div>
+                <div class="col-xs-8"></div>
+                <div class="col-xs-2" style="text-align: right">
+                    <button class="btn btn-success" ng-click="createRecord()">Add</button>
+                </div>
+                <div class="col-xs-12" style="margin-top: 10px">
+                    <table class="table table-stripped" width="100%">
+                        <thead>
+                            <th class="col-md-6">Username</th>
+                            <th class="col-md-5">Phone</th>
+                            <th class="col-md-1"></th>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="record in records">
+                                <td>{{record.username}}</td>
+                                <td>{{record.phone}}</td>
+                                <td><i class="glyphicon glyphicon-trash" style="color: #c50909;
+                                    cursor: pointer" ng-click="deleteRecord(record.id)"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-12">
+                    <ul uib-pagination total-items="totalItems" ng-model="currentPage"
+                    ng-change="pageChanged()" class="pagination-sm"
+                    boundary-links="true" items-per-page="pageSize" max-size="maxSize"/>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

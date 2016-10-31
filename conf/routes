@@ -1,0 +1,8 @@
+GET           /                         controllers.Application.index()
+
+GET           /api/v1/record            controllers.RecordController.find(name: Option[String] ?= None)
+POST          /api/v1/record            controllers.RecordController.create
+DELETE        /api/v1/record/:id        controllers.RecordController.delete(id: Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET           /assets/*file             controllers.Assets.at(path="/public", file)

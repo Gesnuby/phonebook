@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add new record</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xs-4">
+            <label for="username">Name</label>
+        </div>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="username" ng-model="newRecord.username" style="margin-bottom: 10px">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <label for="phone">Phone number</label>
+        </div>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="phone" ng-model="newRecord.phone" restrict-input="^[0-9-]*$"
+                   style="margin-bottom: 10px">
+        </div>
+    </div>
+    <div ng-repeat="error in errors">
+        <div collapse="isCollapsed" class="alert alert-danger" role="alert">
+            <strong>Error!</strong> {{ error }}
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="create()">Create</button>
+    <button class="btn btn-danger" type="button" ng-click="cancel()">Cancel</button>
+</div>
